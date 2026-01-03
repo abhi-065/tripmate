@@ -13,24 +13,13 @@ dotenv.config();
 const app = express();
 
 /* =========================
-   CORS (LOCAL + NETLIFY)
+   CORS (FINAL – WORKS FOR NETLIFY, RENDER, LOCAL)
 ========================= */
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://triipmatee.netlify.app/" // 🔴 replace if Netlify URL differs
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: true, // 👈 reflects request origin automatically
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
@@ -63,6 +52,7 @@ mongoose
    SERVER START
 ========================= */
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
