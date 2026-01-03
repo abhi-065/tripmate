@@ -17,7 +17,7 @@ const app = express();
 ========================= */
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://tripmate.netlify.app" // 🔴 replace if Netlify URL differs
+  "https://triipmatee.netlify.app/" // 🔴 replace if Netlify URL differs
 ];
 
 app.use(
