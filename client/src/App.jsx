@@ -25,38 +25,33 @@ export default function App() {
 
   return (
     <>
-      <nav className="bg-blue-600 text-white px-6 py-3 flex justify-between items-center">
-  <h2 className="font-bold text-lg">TripMate</h2>
+      <nav className="bg-blue-600 text-white px-8 py-4 flex justify-between items-center shadow">
+  <h2 className="font-bold text-xl tracking-wide">
+    🌍 TripMate
+  </h2>
 
-  <div className="flex gap-4 items-center">
+  <div className="flex gap-5 items-center text-sm">
     {user ? (
       <>
-        <Link to="/add">Add Trip</Link>
-        <Link to="/explore">Explore</Link>
-        <Link to="/requests">
-  Requests
-</Link>
+        <Link to="/explore" className="hover:underline">Explore</Link>
+        <Link to="/add" className="hover:underline">Add Trip</Link>
+        <Link to="/find" className="hover:underline">Find Partner</Link>
+        <Link to="/my-trips" className="hover:underline">My Trips</Link>
+        <Link to="/requests" className="hover:underline">Requests</Link>
 
-        <Link to="/find">Find Partner</Link>
-        <Link to="/my-trips">My Trips</Link>
-
-        <Link to="/profile" className="text-yellow-300">
+        <Link to="/profile" className="bg-white text-blue-600 px-3 py-1 rounded font-semibold">
           👤 {user.name}
         </Link>
 
-        {user?.isAdmin && (
-  <Link to="/admin" className="text-red-600 font-bold">
-    Admin
-  </Link>
-)}
-
+        {user.isAdmin && (
+          <Link to="/admin" className="bg-red-500 px-3 py-1 rounded font-bold">
+            Admin
+          </Link>
+        )}
 
         <button
-          onClick={() => {
-            localStorage.clear();
-            navigate("/login");
-          }}
-          className="bg-red-500 px-3 py-1 rounded"
+          onClick={logout}
+          className="bg-black bg-opacity-20 px-3 py-1 rounded hover:bg-opacity-30"
         >
           Logout
         </button>
@@ -69,6 +64,7 @@ export default function App() {
     )}
   </div>
 </nav>
+
 
 
       <Routes>
